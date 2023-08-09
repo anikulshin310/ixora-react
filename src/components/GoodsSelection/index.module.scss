@@ -1,0 +1,29 @@
+.wrapper {
+  padding: 15px;
+  .title {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    border-bottom: 1px solid black;
+    align-items: center;
+    .model_name {
+      font-size: 25px;
+      font-weight: bold;
+      color: red;
+    }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    column-count: 5;
+    @media screen and (max-width: 768px) {
+      column-count: 3;
+    }
+    @media screen and (max-width: 480px) {
+      column-count: 2;
+    }
+    li {
+      cursor: pointer;
+    }
+  }
+}
