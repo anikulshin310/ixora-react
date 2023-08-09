@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { fetchData } from "../../network/api";
 import { API_ROUTES } from "../../network/api_routes";
 import { TAuto, TBrandModel, TModifications, TModParams } from "../../types";
@@ -39,7 +39,7 @@ export const GoodsSelection = () => {
 
   useEffect(() => {
     getAllBrands();
-  }, []);
+  }, [getAllBrands]);
 
   return (
     <div className={styles.wrapper}>
