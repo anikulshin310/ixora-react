@@ -1,0 +1,14 @@
+.list {
+  list-style: none;
+  padding: 0;
+  column-count: 5;
+  @media screen and (max-width: 768px) {
+    column-count: 3;
+  }
+  @media screen and (max-width: 480px) {
+    column-count: 2;
+  }
+  li {
+    cursor: pointer;
+  }
+}

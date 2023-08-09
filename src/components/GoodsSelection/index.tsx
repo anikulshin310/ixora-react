@@ -4,14 +4,13 @@ import { API_ROUTES } from "../../network/api_routes";
 import { TAuto, TBrandModel, TModifications, TModParams } from "../../types";
 import { GoodItem } from "./GoodItem";
 import { GoodsList } from "./GoodsList";
+import { SelectionHeader } from "./SelectionHeader";
 import styles from "./index.module.scss";
 
 export const GoodsSelection = () => {
   const [allBrands, setAllBrands] = useState<TAuto[] | null>(null);
   const [brandModels, setBrandModels] = useState<TBrandModel[] | null>(null);
-  const [modifications, setModifications] = useState<TModifications[] | null>(
-    null
-  );
+  const [modifications, setModifications] = useState<TModifications[] | null>(null);
   const [modParams, setModParams] = useState<TModParams | null>(null);
   const [currentTab, setCurrentTab] = useState<number>(0);
   const [currentBrand, setCurrentBrand] = useState<string | null>(null);
@@ -21,16 +20,12 @@ export const GoodsSelection = () => {
     fetchData(API_ROUTES.AUTO).then((data: TAuto[]) => setAllBrands(data));
   }, []);
   const getBrandModels = useCallback((id: number, name: string) => {
-    fetchData(API_ROUTES.MODEL(id)).then((data: TBrandModel[]) =>
-      setBrandModels(data)
-    );
+    fetchData(API_ROUTES.MODEL(id)).then((data: TBrandModel[]) => setBrandModels(data));
     setCurrentTab(1);
     setCurrentBrand(name);
   }, []);
   const getModifications = useCallback((id: number, name: string) => {
-    fetchData(API_ROUTES.MODIFICATIONS(id)).then((data: TModifications[]) =>
-      setModifications(data)
-    );
+    fetchData(API_ROUTES.MODIFICATIONS(id)).then((data: TModifications[]) => setModifications(data));
     setCurrentTab(2);
     setCurrentModel(name);
   }, []);
@@ -48,33 +43,13 @@ export const GoodsSelection = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.title}>
-        <h3>
-          {!currentMod ? "Подбор стеклоочистителей" : "Стеклоочистители для"}
-        </h3>
-        <span className={styles.model_name}>
-          {currentBrand} {currentModel}
-        </span>{" "}
-        {currentMod}
-      </div>
-
-      <ul>
-        <GoodsList
-          isCurrent={currentTab === 0}
-          goods={allBrands}
-          onClick={getBrandModels}
-        />
-        <GoodsList
-          isCurrent={currentTab === 1}
-          goods={brandModels}
-          onClick={getModifications}
-        />
-        <GoodsList
-          isCurrent={currentTab === 2}
-          goods={modifications}
-          onClick={getModificationParams}
-        />
-      </ul>
+      <SelectionHeader
+        title={!currentMod ? "Подбор стеклоочистителей" : "Стеклоочистители для"}
+        misc={[currentBrand, currentModel, currentMod]}
+      />
+      <GoodsList isCurrent={currentTab === 0} goods={allBrands} onClick={getBrandModels} />
+      <GoodsList isCurrent={currentTab === 1} goods={brandModels} onClick={getModifications} />
+      <GoodsList isCurrent={currentTab === 2} goods={modifications} onClick={getModificationParams} />
       {modParams && currentTab === 3 && <GoodItem item={modParams} />}
     </div>
   );
