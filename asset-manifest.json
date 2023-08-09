@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ixora-react/static/css/main.ebe69d37.css",
+    "main.js": "/ixora-react/static/js/main.108bbefd.js",
+    "static/js/787.bad403be.chunk.js": "/ixora-react/static/js/787.bad403be.chunk.js",
+    "index.html": "/ixora-react/index.html",
+    "main.ebe69d37.css.map": "/ixora-react/static/css/main.ebe69d37.css.map",
+    "main.108bbefd.js.map": "/ixora-react/static/js/main.108bbefd.js.map",
+    "787.bad403be.chunk.js.map": "/ixora-react/static/js/787.bad403be.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ebe69d37.css",
+    "static/js/main.108bbefd.js"
+  ]
+}
