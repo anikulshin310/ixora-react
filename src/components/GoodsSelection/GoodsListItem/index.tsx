@@ -3,12 +3,17 @@ import React, { FC } from "react";
 type TGoodsListItem = {
   title: string;
   id: number;
-  onClick: (id: number, name: string) => void;
+  onClick: (id: number) => void;
+  handleSelected: (name: string) => void;
 };
 
-export const GoodsListItem: FC<TGoodsListItem> = ({ title, onClick, id }) => {
+export const GoodsListItem: FC<TGoodsListItem> = ({ title, onClick, id, handleSelected }) => {
+  const handleClick = (id: number, name: string) => {
+    onClick(id);
+    handleSelected(name);
+  };
   return (
-    <li key={title} onClick={() => onClick(id, title)}>
+    <li key={title} onClick={() => handleClick(id, title)}>
       {title}
     </li>
   );

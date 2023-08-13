@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { TModParams } from "../../../types";
+import { TModParams } from "../../../store/WiperBladesSearch/types";
 import styles from "./index.module.scss";
 
 type TGoodItem = {
